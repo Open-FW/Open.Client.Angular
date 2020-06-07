@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Client.Angular", "Open.Client.Angular\Open.Client.Angular.csproj", "{B94A8107-D734-47AA-8BF7-09C1ABE56F14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA55A0CA-4B49-4727-BD19-6A2FC90A99CD}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B94A8107-D734-47AA-8BF7-09C1ABE56F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94A8107-D734-47AA-8BF7-09C1ABE56F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94A8107-D734-47AA-8BF7-09C1ABE56F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94A8107-D734-47AA-8BF7-09C1ABE56F14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF9E74A6-0706-4574-A50E-1F384506D434}
+	EndGlobalSection
+EndGlobal
