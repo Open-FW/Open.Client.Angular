@@ -70,9 +70,4 @@ export class AuthService {
     get authorizationHeaderValue(): string {
         return this.user ? `${this.user.token_type} ${this.user.access_token}` : ''
     }
-
-    get name(): string {
-        console.log('user', this.user)
-        return this.user?.profile?.name ?? ''
-    }
 }
