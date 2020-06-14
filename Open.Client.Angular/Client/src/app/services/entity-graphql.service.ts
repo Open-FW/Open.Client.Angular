@@ -38,13 +38,6 @@ export class EntityGraphQLService {
         )
     }
 
-    watchQueryHot<T>(options: WatchQueryOptions): Observable<T>
-    watchQueryHot<T, R>(options: WatchQueryOptions, mapFn: (data: T, loading?: boolean) => R): Observable<R>
-
-    watchQueryHot<T, R = T>(options: WatchQueryOptions, mapFn?: (data: T, loading?: boolean) => R): Observable<R> {
-        return this.apollo.watchQuery<T>(options).valueChanges.pipe(map(({ data, loading }) => mapFn ? mapFn(data || {} as T, loading) : data as any as R))
-    }
-
     public mutate<T>(options: MutationOptions<T>, vars$?: Observable<{ [key: string]: any }>): Observable<T>
     public mutate<T, R>(options: MutationOptions<T>, vars$?: Observable<{ [key: string]: any }>, mapFn?: (data: T, loading?: boolean) => R): Observable<R>
     public mutate<T, R = T>(options: MutationOptions<T>, vars$?: Observable<{ [key: string]: any }>, mapFn?: (data: T, loading?: boolean) => R): Observable<R> {
