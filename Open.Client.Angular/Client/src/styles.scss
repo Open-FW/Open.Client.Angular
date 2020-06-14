@@ -7,3 +7,21 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.sb-info {
+    background: #212121;
+}
+
+.sb-success {
+    background: #4CAF50
+}
+
+.sb-warning {
+    background: #FF9800
+}
+
+.sb-error {
+    background: #F44336;
+    color: #FFF;
+}

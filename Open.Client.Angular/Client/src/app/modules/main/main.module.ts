@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common'
 import { MainPageComponent } from './main.page'
 import { MainRoutingModule } from './main.routing'
 import { LayoutComponent } from './containers/layout/layout.component'
+import { MaterialModule } from './material.module'
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LayoutComponent } from './containers/layout/layout.component'
     imports: [
         CommonModule,
 
-        MainRoutingModule
+        MainRoutingModule,
+        MaterialModule
     ]
 })
 export class MainModule { }

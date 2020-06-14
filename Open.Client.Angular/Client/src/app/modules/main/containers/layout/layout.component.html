@@ -1,5 +1,6 @@
 
-<!--The content below is only a placeholder and can be replaced.-->
+<mat-progress-bar mode="indeterminate" color="accent" class="progress-bar" *ngIf="loading$ | async"></mat-progress-bar>
+
 <div style="text-align:center" class="content">
     <h1>
         Welcome to {{title}}!
@@ -23,6 +24,9 @@
 
 <button (click)="logout()">LogOut</button>
 
-{{ name }}
+<button (click)="message()">Message</button>
+
+
+{{ name$ | async }}
 
 <router-outlet></router-outlet>

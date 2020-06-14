@@ -17,6 +17,8 @@ import { AppConfigService } from './services/app-configuration.service'
 import { GraphQLModule } from './graphql.module'
 import { AuthInterceptor } from './interceptors/auth.interceptor'
 import { MainModule } from './modules/main/main.module'
+import { ErrorInterceptor } from './interceptors/error.interceptor'
+import { MaterialModule } from './material.module'
 
 export function httpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http)
@@ -36,6 +38,7 @@ export function initAppFactory(appConfigService: AppConfigService) {
         BrowserAnimationsModule,
         AppRoutingModule,
         CommonModule,
+        MaterialModule,
 
         HttpClientModule,
         FormsModule,
@@ -62,6 +65,11 @@ export function initAppFactory(appConfigService: AppConfigService) {
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
             multi: true
         }
     ],

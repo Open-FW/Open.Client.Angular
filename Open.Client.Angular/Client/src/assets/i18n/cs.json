@@ -1,5 +1,8 @@
 {
     "Auth": {
         "[Redirecting]": "Přesměrovávám"
+    },
+    "Error": {
+        "[General]": "Něco se pokazilo"
     }
 }

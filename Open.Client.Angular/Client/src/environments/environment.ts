@@ -17,7 +17,7 @@ export const environment = {
     } as Oidc,
 
     api: {
-        url: 'http://localhost:7600'
+        url: 'https://graphql-pokemon.now.sh'
     } as Api
 }
 
