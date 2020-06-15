@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
                             this.router.navigate(['auth', 'unauthorized'])
                         }
 
-                        if (err.status === 403) {
+                        else if (err.status === 403) {
                             this.router.navigate(['auth', 'unauthorized'])
                         }
                     }

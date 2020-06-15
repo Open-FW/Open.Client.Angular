@@ -4,11 +4,13 @@ import { environment } from 'src/environments/environment'
 
 import { User, UserManager } from 'oidc-client'
 
-
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private authStateSource = new BehaviorSubject<boolean>(false)
-    public authState = this.authStateSource.asObservable()
+    private authStateSubject = new BehaviorSubject<boolean>(false)
+    public authState = this.authStateSubject.asObservable()
+
+    private userSubject = new BehaviorSubject<User>(null)
+    public user$ = this.userSubject.asObservable()
 
     private manager = new UserManager({
         authority: environment.oidc.authority,
@@ -27,7 +29,8 @@ export class AuthService {
     constructor() {
         this.manager.getUser().then(user => {
             this.user = user
-            this.authStateSource.next(this.isAuthenticated)
+            this.userSubject.next(user)
+            this.authStateSubject.next(this.isAuthenticated)
         })
     }
 
@@ -45,14 +48,15 @@ export class AuthService {
 
     async signinComplete(): Promise<void> {
         this.user = await this.manager.signinRedirectCallback()
-        this.authStateSource.next(this.isAuthenticated)
+        this.userSubject.next(this.user)
+        this.authStateSubject.next(this.isAuthenticated)
     }
 
     async signoutComplete(): Promise<void> {
         await this.manager.signoutRedirectCallback()
         await this.manager.clearStaleState()
 
-        this.authStateSource.next(this.isAuthenticated)
+        this.authStateSubject.next(this.isAuthenticated)
     }
 
     get state(): any {
@@ -65,9 +69,5 @@ export class AuthService {
 
     get authorizationHeaderValue(): string {
         return this.user ? `${this.user.token_type} ${this.user.access_token}` : ''
-    }
-
-    get name(): string {
-        return this.user?.profile?.name ?? ''
     }
 }

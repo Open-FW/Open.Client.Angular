@@ -1,5 +1,8 @@
 {
     "Auth": {
         "[Redirecting]": "Redirecting"
+    },
+    "Error": {
+        "[General]": "Something went wrong"
     }
 }

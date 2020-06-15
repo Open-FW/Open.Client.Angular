@@ -21,6 +21,7 @@ export function createApollo(httpLink: HttpLink, authService: AuthService) {
     return {
         link: authLink.concat(httpLink.create({ uri })),
         cache: new InMemoryCache(),
+        resolvers: {}
     }
 }
 
