@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Apollo } from 'apollo-angular'
-import { Observable, of, throwError } from 'rxjs'
-import { map, switchMap, tap, finalize, catchError } from 'rxjs/operators'
+import { Observable, of } from 'rxjs'
+import { map, switchMap, tap, finalize } from 'rxjs/operators'
 import { QueryOptions, WatchQueryOptions, MutationOptions } from 'apollo-client'
 import { Store } from '../store/store.service'
 import { GraphQLError } from 'graphql'
@@ -17,9 +17,9 @@ export class EntityGraphQLService {
         return (vars$ ?? of(null)).pipe(
             map(vars => vars ?? {}),
             tap(_ => this.store.dispatchLoading()),
-            switchMap(vars => this.apollo.query<T>({ errorPolicy: 'ignore', ...options, variables: { ...(options.variables ?? {}), ...vars } })),
+            switchMap(vars => this.apollo.query<T>({ errorPolicy: 'all', ...options, variables: { ...(options.variables ?? {}), ...vars } })),
             tap(({ errors }) => this.catchGraphQLErrors(errors)),
-            map(({ data, loading }) => mapFn ? mapFn(data || {} as T, loading) : data as any as R),
+            map(({ data, loading }) => mapFn ? mapFn(data || {} as T, loading) : data as any),
             finalize(() => {
                 this.store.dispatchLoadingFinished()
             })
@@ -34,7 +34,7 @@ export class EntityGraphQLService {
             switchMap(vars => this.apollo.watchQuery<T>({ errorPolicy: 'all', ...options, variables: { ...(options.variables ?? {}), ...vars } }).valueChanges),
             tap(console.warn),
             tap(({ errors }) => this.catchGraphQLErrors(errors)),
-            map(({ data, loading }) => mapFn ? mapFn(data || {} as T, loading) : data as any as R),
+            map(({ data, loading }) => mapFn ? mapFn(data || {} as T, loading) : data as any),
         )
     }
 
@@ -46,7 +46,7 @@ export class EntityGraphQLService {
             tap(_ => this.store.dispatchLoading()),
             switchMap(vars => this.apollo.mutate<T>({ errorPolicy: 'all', ...options, variables: { ...(options.variables ?? {}), ...vars } })),
             tap(({ errors }) => this.catchGraphQLErrors(errors)),
-            map(({ data }) => mapFn ? mapFn(data || {} as T) : data as any as R),
+            map(({ data }) => mapFn ? mapFn(data || {} as T) : data as any),
             finalize(() => {
                 this.store.dispatchLoadingFinished()
             })

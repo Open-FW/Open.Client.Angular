@@ -21,8 +21,7 @@ export class RootComponent implements OnInit, OnDestroy {
         private readonly store: Store,
         private readonly snackbar: MatSnackBar
     ) {
-        this.translate.setDefaultLang('en')
-        this.translate.use('cs')
+
     }
 
     public ngOnInit(): void {

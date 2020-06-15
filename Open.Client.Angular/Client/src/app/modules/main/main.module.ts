@@ -6,6 +6,7 @@ import { MainRoutingModule } from './main.routing'
 import { LayoutComponent } from './containers/layout/layout.component'
 import { MaterialModule } from './material.module'
 
+import { TranslateModule } from '@ngx-translate/core'
 
 @NgModule({
     declarations: [
@@ -16,7 +17,9 @@ import { MaterialModule } from './material.module'
         CommonModule,
 
         MainRoutingModule,
-        MaterialModule
+        MaterialModule,
+
+        TranslateModule
     ]
 })
 export class MainModule { }
