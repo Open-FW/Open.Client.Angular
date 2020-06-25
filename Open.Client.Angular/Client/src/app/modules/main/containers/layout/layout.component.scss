@@ -1,5 +1,26 @@
+@import "~@angular/material/theming";
+@import 'src/theme';
+
 .progress-bar {
     z-index: 9999;
     position: fixed;
     top: 0;
+}
+
+.sidenav-container {
+    flex: 1;
+
+    & .sidenav {
+        width: 250px;
+        background-color: map-get($client-primary, 500);
+    }
+
+    & .sidenav-content {
+        min-height: 100vh;
+
+        & .sidenav-content-content {
+            margin: 1rem;
+            margin-top: 4.5rem;
+        }
+    }
 }

@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core'
 
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatListModule } from '@angular/material/list'
+
 
 const modules = [
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSidenavModule,
+    MatListModule
 ]
 
 @NgModule({

@@ -16,7 +16,6 @@ import { RootComponent } from './root.component'
 import { AppConfigService } from './services/app-configuration.service'
 import { GraphQLModule } from './graphql.module'
 import { AuthInterceptor } from './interceptors/auth.interceptor'
-import { MainModule } from './modules/main/main.module'
 import { ErrorInterceptor } from './interceptors/error.interceptor'
 import { MaterialModule } from './material.module'
 
