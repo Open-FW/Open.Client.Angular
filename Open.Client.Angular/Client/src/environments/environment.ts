@@ -13,7 +13,7 @@ export const environment = {
         postLogoutRedirectUri: 'http://localhost:7200/auth/signout-callback',
         redirectUri: 'http://localhost:7200/auth/signin-callback',
         responseType: 'code',
-        scope: 'openid offline_access profile email api.read'
+        scope: 'openid offline_access profile email'
     } as Oidc,
 
     api: {
